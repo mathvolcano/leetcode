@@ -3,7 +3,7 @@
 """
 Created on Sat Oct 27 11:18:12 2018
 
-@author: kevinschenthal
+@author: mathvolcano
 
 Remove Duplicates from Sorted Array
 

@@ -3,7 +3,7 @@
 """
 Created on Fri Oct 26 04:47:01 2018
 
-@author: kevinschenthal
+@author: mathvolcano
 """
 
 def longestCommonPrefix(strs):
