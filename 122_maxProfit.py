@@ -8,12 +8,10 @@ def maxProfit(prices):
     if len(prices) <= 1: return 0
 
     best_profit = 0
-    min_idx_so_far = 0
     max_idx_after_min = 0
 
     for i in range(1, len(prices)):
         if prices[i] <= prices[i-1]:
-            min_idx_so_far = i
             max_idx_after_min = i
         if prices[i] > prices[max_idx_after_min]:
             best_profit += prices[i] - prices[max_idx_after_min]
