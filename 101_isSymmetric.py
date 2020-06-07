@@ -21,7 +21,7 @@ class Solution:
                 equal_vals = (sub_tree1.val == sub_tree2.val)
                 outer_symmetry = symmetry_helper(sub_tree1.left, sub_tree2.right)
                 inner_symmetry = symmetry_helper(sub_tree1.right, sub_tree2.left)
-                return (equal_vals and outer_symmetry and inner_symmetry)
+                return equal_vals and outer_symmetry and inner_symmetry
             else:
                 return False
 
