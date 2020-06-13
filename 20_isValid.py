@@ -1,12 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sun Nov 11 09:08:01 2018
-
-@author: kevinschenthal
-
 20. Valid Parentheses
+https://leetcode.com/problems/valid-parentheses/
 """
+
 
 class Solution:
     def isValid(self, s):
