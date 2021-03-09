@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Wed Mar 11 17:41:53 2020
-
-@author: mathvolcano
 21. Merge Two Sorted Lists
 https://leetcode.com/problems/merge-two-sorted-lists/
 """
