@@ -1,14 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sun Jan 19 12:20:45 2020
-
-@author:  mathvolcano
-
 Leetcode 682. Baseball Game
+https://leetcode.com/problems/baseball-game/
 """
-
-
 
 def calPoints(ops):
     ops_list = []
