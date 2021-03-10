@@ -1,25 +1,33 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def averageOfLevels(self, root: TreeNode) -> List[float]:
-        res = []
-        if not root: return res
+"""
+637. Average of Levels in Binary Tree
+https://leetcode.com/problems/average-of-levels-in-binary-tree/
+"""
 
-        nodes = [root]
+# Helper class that allocates a  
+# new node with the given data and  
+# None left and right pointers.  
+class newNode: 
+    def __init__(self, data): 
+        self.val = data  
+        self.left = self.right = None
 
-        while nodes:
-            vals = []
-            new_nodes = []
-            for n in nodes:
-                vals.append(n.val)
-                if n.left:
-                    new_nodes.append(n.left)
-                if n.right:
-                    new_nodes.append(n.right)
-            res.append(sum(vals) / len(vals))
-            nodes = new_nodes
+def averageOfLevels(root):
+    res = []
+    if not root:
         return res
+    q = [root]
+    while q:
+        temp = []
+        total = 0
+        count = 0
+        while q:
+            node = q.pop()
+            if node.left:
+                temp.append(node.left)
+            if node.right:
+                temp.append(node.right)
+            total += node.val
+            count += 1
+        res.append(total*1.0/count)
+        q = list(temp)
+    return res  
