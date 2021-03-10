@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Fri Jan 31 20:53:25 2020
-
-@author: mathvolcano
-
 438. Find All Anagrams in a String
 """
 
@@ -15,8 +9,7 @@ def findAnagrams(s, p):
         return None
     
     p_sorted = ''.join(sorted(p))
-    
-#    n_len_p_strs = len(s) - len(p) + 1
+
     grams = [''.join(sorted(s[i:i+len(p)]))
              for i in range(len(s) - len(p) + 1)]
     idx_matches = []
