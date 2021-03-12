@@ -1,13 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Fri Feb 28 17:09:40 2020
-
-@author: mathvolcano
-
-https://leetcode.com/problems/search-in-rotated-sorted-array/
-
 33. Search in Rotated Sorted Array
+https://leetcode.com/problems/search-in-rotated-sorted-array/
 """
 
 def search(nums, target):
@@ -39,14 +32,4 @@ def search(nums, target):
             else:
                 left = mid + 1
                 right -= 1
-    
     return -1
-
-nums = [4,5,6,7,0,1,2]
-search(nums, 0) # 4
-
-search([], 0) # -1
-
-search([1], 0) # -1
-
-search([1], 1) # 0
