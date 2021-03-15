@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sat Mar  7 18:07:56 2020
-
-@author: mathvolcano
-
 139. Word Break
 https://leetcode.com/problems/word-break/
 """

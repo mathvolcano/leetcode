@@ -1,12 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sun Mar  8 13:18:59 2020
-
-@author: mathvolcano
-
 1143. Longest Common Subsequence
-
 https://leetcode.com/problems/longest-common-subsequence/
 """
 

@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Tue Mar 17 07:30:46 2020
-
-@author: mathvolcano
-
 59. Spiral Matrix II
 https://leetcode.com/problems/spiral-matrix-ii/
 """
