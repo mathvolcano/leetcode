@@ -1,11 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Nov 12 05:48:36 2018
-
-@author: mathvolcano
-
-Add two numbers
+2. Add Two Numbers
+https://leetcode.com/problems/add-two-numbers/
 """
 
 # Definition for singly-linked list.
