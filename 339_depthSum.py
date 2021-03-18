@@ -57,5 +57,3 @@ class Solution:
             else:
                 total += self.depthSum(x.getList(), depth=depth+1)
         return total
-
-        return total
