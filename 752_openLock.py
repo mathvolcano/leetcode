@@ -1,12 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Thu Feb  6 07:32:48 2020
-
-@author: mathvolcano
-
 Open the Lock
-https://leetcode.com/explore/learn/card/queue-stack/231/practical-application-queue/1375/
+https://leetcode.com/problems/open-the-lock/
 """
 
 def openLock(deadends, target):
