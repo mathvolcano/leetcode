@@ -1,17 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Mon Feb 10 08:05:56 2020
 
 @author: mathvolcano
 
 Bubble Sort
-
-Best case time complexity is O(n) when the array is already sorted.
-Average & worst case both are O(n^2). 
-
-Obama famously said "I think the bubble sort would be the wrong way to go." in
-interview with Eric Schmidt.
 """
 
 def bubbleSort(arr):
