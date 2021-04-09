@@ -25,8 +25,3 @@ class Solution:
             swapped_ll = self.swapPairs(tail)
             head.next.next = swapped_ll
         return head
-
-
-
-
-        
