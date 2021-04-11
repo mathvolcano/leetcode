@@ -8,19 +8,13 @@ class Solution:
         if len(triangle) == 1: return triangle[0][0]
 
         # DP – track the min sum paths
-        r = 1  # row
-        while r < len(triangle):
-
-            # Endpoints only have 1 path
-            triangle[r][0]  += triangle[r-1][0]
-            triangle[r][-1] += triangle[r-1][-1]
-
-            if len(triangle) == 2:
-                return min(triangle[r])
-
-            for i in range(1, r):
-                triangle[r][i] += min(triangle[r-1][i-1], triangle[r-1][i])
-
-            r += 1
+        # O(n^2) time, O(n^2) space (no additional space required)
+        n = len(triangle)
+        for i in range(1, n):
+            triangle[i][0]  += triangle[i-1][0]
+            triangle[i][-1] += triangle[i-1][-1]
+        for i in range(2, n):
+            for j in range(1, i):
+                triangle[i][j] += min(triangle[i-1][j-1], triangle[i-1][j])
 
         return min(triangle[-1])
