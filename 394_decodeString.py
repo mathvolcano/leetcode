@@ -7,27 +7,23 @@ class Solution:
     def decodeString(self, s: str) -> str:
         # Use a stack to hold bracketed values
         # Append results to a string
+
+        # O(n) time complexity
+        # Space complexity depends on size of int
         stack = []
         num = 0
+        substr = ''
         for _, c in enumerate(s):
-            if len(stack) == 0:
-                stack.append(c)
-            else:
-                if c == '[':
-                    stack.append(c)
-                elif c == ']':
-                    # Create substring to multiply and append to result
-                    substr = ''
-                    top = stack[-1]
-                    while top != '[':
-                        substr = stack.pop() + substr
-                        top = stack[-1]
-                    stack.pop()  # Remove '['
-                    n, power = 0, power  # Get the number of substring copies
-                    while stack and stack[-1].isdigit():
-                        n += int(stack.pop()) * power
-                        power *= 10
-                    stack.append(n * substr)
-                else:
-                    stack.append(c)
-        return ''.join(stack)
+            if c.isdigit():
+                num = num*10 + int(c)
+            elif c == '[':
+                stack.append(substr)
+                stack.append(num)
+                substr, num = '', 0  # Reset
+            elif c.isalpha():
+                substr += c
+            elif c == ']':
+                pre_num = stack.pop()
+                pre_str = stack.pop()
+                substr = pre_str + pre_num * substr
+        return substr
