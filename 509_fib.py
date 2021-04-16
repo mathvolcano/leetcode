@@ -5,12 +5,8 @@ https://leetcode.com/problems/fibonacci-number/
 
 class Solution:
     def fib(self, n: int) -> int:
-        cache = {}
-        if n in cache: return self.fib(cache)
-
-        if n < 2:
-            res = n
-        else:
-            res = self.fib(n-1) + self.fib(n-2)
-        cache[n] = res
-        return res
+        mem = [0, 1, 1]
+        if n < len(mem): return mem[n]
+        while len(mem) < n + 1:
+            mem += [mem[-1] + mem[-2]]
+        return mem[n]
