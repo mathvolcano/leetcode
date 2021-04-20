@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sat Mar  7 15:56:39 2020
-
-@author: mathvolcano
-
 55. Jump Game
 https://leetcode.com/problems/jump-game/
 """
