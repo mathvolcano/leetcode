@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Thu Mar 19 09:10:10 2020
-
-@author: mathvolcano
-
 377. Combination Sum IV
 https://leetcode.com/problems/combination-sum-iv/
 """
@@ -21,23 +15,4 @@ def combinationSum4(nums, target):
         for n in nums:
             if i >= n:
                 dp[i] += dp[i-n]
-        print(i, dp)
     return dp.pop()
-    
-
-
-nums = [1, 2, 3]
-target = 4
-combinationSum4(nums, target) # 7
-
-nums = [3]
-target = 4
-combinationSum4(nums, target) # 0
-
-nums = []
-target = 4
-combinationSum4(nums, target) # 0
-
-nums = [4,2,1]
-target = 32
-combinationSum4(nums, target) # 0
