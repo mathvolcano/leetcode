@@ -19,8 +19,3 @@ def longestCommonSubsequence(text1, text2):
                 matrix[r][c] = max(matrix[r][c-1], matrix[r-1][c])
 
     return matrix[-1][-1]
-
-text1 = "abcde"
-text2 = "ace" 
-
-longestCommonSubsequence(text1, text2) # 3
