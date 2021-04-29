@@ -1,13 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Tue Feb 18 08:02:44 2020
-
-@author: mathvolcano
-
-https://leetcode.com/problems/valid-palindrome-ii/
-
 680. Valid Palindrome II
+https://leetcode.com/problems/valid-palindrome-ii/
 """
 
 def validPalindrome(s):
@@ -25,5 +18,3 @@ def validPalindrome(s):
         l += 1
         r -= 1
     return True
-
-s = "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"
