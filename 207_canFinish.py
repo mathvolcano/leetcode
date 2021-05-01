@@ -12,7 +12,7 @@ class Solution:
         for p in prerequisites:
             if p[0] not in gr[p[1]]:
                 gr[p[1]].append(p[0])
-        visit = [0 for x in range(numCourses)]
+        visit = [0 for _ in range(numCourses)]
 
         for c in range(numCourses):
             if visit[c] != 1:
