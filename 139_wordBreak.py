@@ -5,7 +5,7 @@ https://leetcode.com/problems/word-break/
 
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        # DP O(n*m)
+        # DP O(n*m) time, O(n) space
         n = len(s)
         if n == 0: return True
         if s in wordDict: return True
