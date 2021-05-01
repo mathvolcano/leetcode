@@ -6,25 +6,27 @@ https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-
 
 
 def searchRange(nums, target):
-    if (not nums) or (target > nums[len(nums)-1]) or (target < nums[0]):
-        return [-1, -1]
+    # Binary searches to find leftmost and rightmost occurences
+    # O(log n) time O(1) space
+    l, r = 0, len(nums) - 1
+    l_most = -1
+    while l <= r:
+        m = (r + l) // 2
+        if nums[m] >= target:
+            r = m - 1
+        else:
+            l = m + 1
+        if nums[m] == target:
+            l_most = m
 
-    # Perform a binary search
-    l = 0
-    r = len(nums) - 1
-    count = 0
-    while (nums[l] < target) or (nums[r] > target):
-        mid = int((r + l) / 2)
-        val = nums[mid]
-        if val < target:
-            l = mid + 1
-        elif val > target:
-            r = mid - 1
-
-        if nums[l] < target:
-            l += 1
-        if nums[r] > target:
-            r -= 1
-        if l >= r:
-            break
-    return [l, r] if nums[l] == target else [-1, -1]
+    l, r = 0, len(nums) - 1
+    r_most = -1
+    while l <= r:
+        m = (r + l) // 2
+        if nums[m] <= target:
+            l = m + 1
+        else:
+            r = m - 1
+        if nums[m] == target:
+            r_most = m
+    return [l_most, r_most]
