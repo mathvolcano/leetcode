@@ -1,28 +1,35 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Wed Mar 11 09:00:13 2020
-
-@author: mathvolcano
-
 50. Pow(x, n)
 https://leetcode.com/problems/powx-n/
 """
 
-def myPow(x, n):
-    result = 1
-    power = n
-    if n < 0:
-        power, x = -power, 1./x
-    while power:
-        if power & 1:
-            result *= x
-        x *= x
-        power = power >>1
-    return result
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Bitwise exponentiation approach
+        # result = 1
+        # power = n
+        # if n < 0:
+        #     power, x = -power, 1./x
+        # while power:
+        #     if power & 1:
+        #         result *= x
+        #     x *= x
+        #     power = power >>1
+        # return result
 
-myPow(2.00000, 10) # 1024
 
-myPow(2.10000, 3) # 9.26100
+        # Binary exponentiate until n powers are computed.
+        # O(log n) time complexity and O(1) space.
+        if n < 0:
+            n, x = -n, 1./x
 
-myPow(2.00000, -2) # 0.25
+        def helper(x, n):
+            if x == 1 or n == 0: return 1
+            if n == 1: return x
+            temp = helper(x, n // 2)
+            if n % 2 == 0:
+                return temp ** 2
+            else:
+                return (temp ** 2) * x
+
+        return helper(x,n)
