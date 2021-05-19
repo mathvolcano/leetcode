@@ -5,9 +5,12 @@ https://leetcode.com/problems/valid-perfect-square/
 
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
+
+        # Binary search [0, num//2]
+        # O(log(num)) time complexity and O(1) space
         if num == 1: return True
 
-        l, r, = 0, num // 2  # all n > 1 have sqrt(n) < n/2
+        l, r = 0, num // 2  # all n > 1 have sqrt(n) < n/2
         while l < r:
             m = l + (r - l) // 2
             if m*m == num:
