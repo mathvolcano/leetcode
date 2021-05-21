@@ -18,8 +18,9 @@ class Solution:
         # return result
 
 
-        # Binary exponentiate until n powers are computed.
-        # O(log n) time complexity and O(1) space.
+        # Recursion of Binary exponentiate until n powers are computed.
+        # Time complexity: log_2(n) calls so time complexity is O(log n)
+        # Space complexity is O(log n) because of the recursive calls
         if n < 0:
             n, x = -n, 1./x
 
@@ -32,4 +33,5 @@ class Solution:
             else:
                 return (temp ** 2) * x
 
-        return helper(x,n)
+        return helper(x, n)
+
