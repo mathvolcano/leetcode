@@ -3,26 +3,17 @@
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
 """
 
-def maxDepth(root):
-    """Fine."""
-    if not root: return 0
-    
-    depth = 0
-    levels = [root]
-    while levels:
-        new_levels = []
-        for node in levels:
-            if node.left:
-                new_levels.append(node.left)
-            if root.right:
-                new_levels.append(node.right)
-        depth += 1
-        levels = [x for x in new_levels if x]
-            
-    return depth
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: TreeNode) -> int:
+        # Time complexity: T(n) = 2 * T(n/2) + 1
+        # By Master Theorem: O(n^(log_2(2))) = O(n)
+        # Space complexity: O(n) for recursive call stack.
+        if not root: return 0
 
-def maxDepth(root):
-    """Uses recursion."""
-    if root == None:
-        return 0
-    return 1 + max(maxDepth(root.left), maxDepth(root.right))
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
