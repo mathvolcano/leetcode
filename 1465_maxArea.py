@@ -16,7 +16,7 @@ class Solution:
         # max_h_diff = 2 (4-2)
         # max_v_diff = 2 (3-1)
         # return 4 % (10**9 + 7)
-        # O(h*v) time complexity where h = len(horizontalCuts) and v = len(verticalCuts) with O(1) additional space
+        # O(h log h + v log v + h*v) time complexity where h = len(horizontalCuts) and v = len(verticalCuts) with O(1) additional space
 
         horizontalCuts.sort()
         verticalCuts.sort()
