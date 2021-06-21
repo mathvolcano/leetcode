@@ -15,27 +15,27 @@ class Solution:
         # Iterate and return dp[0][-1]
         # O(n^2) time and space complexity
 
-        n = len(stones)
-        dp = [[0] * n for _ in range(n)]
-        # Get the prefix sums
-        prefix = stones[:] + [0]
-        for i in range(n):
-            prefix[i] += prefix[i-1]
-
-        # DP
-        for i in reversed(range(n)):
-            for j in range(i + 1, n):
-                removeHead = prefix[j] - prefix[i]
-                removeTail = prefix[j-1] - prefix[i-1]
-                dp[i][j] = max(removeHead - dp[i+1][j], removeTail - dp[i][j-1])
-        return dp[0][-1]
+        # n = len(stones)
+        # dp = [[0] * n for _ in range(n)]
+        # # Get the prefix sums
+        # prefix = stones[:] + [0]
+        # for i in range(n):
+        #     prefix[i] += prefix[i-1]
+        #
+        # # DP
+        # for i in reversed(range(n)):
+        #     for j in range(i + 1, n):
+        #         removeHead = prefix[j] - prefix[i]
+        #         removeTail = prefix[j-1] - prefix[i-1]
+        #         dp[i][j] = max(removeHead - dp[i+1][j], removeTail - dp[i][j-1])
+        # return dp[0][-1]
 
         # Improvement - only need to track the current and the previous rows of the dp tracking.
         # This reduces space from O(n^2) to O(n)
         # TODO: add example
 
         n = len(stones)
-        dp_curr, dp_prev = [0] * n, [0] * n
+        dp_curr, dp_last = [0] * n, [0] * n
 
         # Get the prefix sums
         prefix = stones[:] + [0]
