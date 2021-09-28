@@ -1,41 +1,34 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sun Mar  1 11:30:36 2020
-
-@author: mathvolcano
-
 3. Longest Substring Without Repeating Characters
-
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
 """
 
-def lengthOfLongestSubstring(s):
-    """Sliding window. Move 2 pointers. O(n) complexity"""
-    if len(s) <= 1: return len(s)
-    
-    i = 0 # 2 pointers
-    j = 0
-    len_longest = 0
-    n = len(s)
-    hash_set = set()
-    
-    while j < n:
-        if s[j] not in hash_set:
-            hash_set.add(s[j])
-            j += 1
-            len_longest = max(len(hash_set), len_longest)
-        else:
-            hash_set.remove(s[i])
-            i += 1
-    return len_longest
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
 
-s = "abcabcbb"
-lengthOfLongestSubstring(s) # 3, 'abc'
+        # 2 pointer / Sliding Window
 
-s = "bbbbb"
-lengthOfLongestSubstring(s) # '1'
+        # 0. Handle trivial cases when len(s) <= 1 to ensure pointers set
+        # 1. Initialize 2 pointers, left l=0 & right r = 1, and a result counter res to track longest
+        #    substring length
+        # 2. Initialize a hash set of characters in the longest substring found
+        # 3a. Iterating through s if the r is a new char not in the hash set then add 1 to r
+        #     and add char to hash set.
+        # 3b. Else, increase l and pop the s[l] from the hash set
 
-s = "pwwkew"
-lengthOfLongestSubstring(s)
+        # O(len(s)) time complexity because we must iterate through the whole string s
+        # O(len(s)) space complexity (worst case) for storing at most all s in the hash set.
 
+        if len(s) <= 1: return len(s)
+
+        l, r, res = 0, 0, 0
+        hs = set()
+        while r < len(s):
+            if s[r] not in hs:
+                hs.add(s[r])
+                r += 1
+            else:
+                hs.remove(s[l])
+                l += 1
+            res = max(res, len(hs))
+        return res
