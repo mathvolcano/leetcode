@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Sun Mar  8 11:50:27 2020
-
-@author: mathvolcano
-
 76. Minimum Window Substring
 https://leetcode.com/problems/minimum-window-substring/
 """

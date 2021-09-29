@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Mar  9 14:41:49 2020
-
-@author: mathvolcano
-
 https://leetcode.com/problems/sort-colors/
 75. Sort Colors
 """
