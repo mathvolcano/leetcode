@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Wed Jan 29 07:50:19 2020
+215. Kth Largest Element in an Array
+https://leetcode.com/problems/kth-largest-element-in-an-array/
+"""
 
-@author: mathvolcano
-"""
-# Assume k is valid 1 <= k <= len(array)
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+
 
 def findKthLargest(nums, k):
     if len(nums) == 0:
