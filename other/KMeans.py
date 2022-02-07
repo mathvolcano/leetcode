@@ -84,6 +84,6 @@ class KMeans:
                 labels[sample_idx] = cluster_idx
         return labels
 
-X = [[1,2], [50,60], [70,80], [90,100]]
-km = KMeans(2,2,10, .001)
-y_pred = km.fit(X)
+# X = [[1,2], [50,60], [70,80], [90,100]]
+# km = KMeans(2,2,10, .001)
+# y_pred = km.fit(X)
