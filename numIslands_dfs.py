@@ -1,13 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Feb 24 07:47:27 2020
-
-@author: mathvolcano
-
-https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1380/
-
 Number of Islands
+https://leetcode.com/problems/number-of-islands/
 """
 
 def numIslands(self, grid):
