@@ -3,7 +3,9 @@
 https://leetcode.com/problems/course-schedule/
 """
 
+
 class Solution:
+
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         # DFS – Encode as a graph a map of prerequisites to their dependent courses
         # Record status of the DFS (1 visited, 0 unvisited, -1 searching)
@@ -19,7 +21,6 @@ class Solution:
                 if not self.dfs(c, visit, gr):
                     return False
         return True
-
 
     def dfs(self, c, visit, gr):
         if visit[c] == 1:
