@@ -11,11 +11,7 @@ https://leetcode.com/problems/binary-tree-preorder-traversal/
 #         self.right = right
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
+        # DFS
+        # O(n) time and space (for stack memory)
         if not root: return []
-
-        l, r = [], []
-        if root.left:
-            l = self.preorderTraversal(root.left)
-        if root.right:
-            r = self.preorderTraversal(root.right)
-        return [root.val] + l + r
+        return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
