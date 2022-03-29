@@ -2,26 +2,33 @@
 42. Trapping Rain Water
 https://leetcode.com/problems/trapping-rain-water/
 """
-import heapq
-def trap(self, heightMap: List[int]) -> int:
-    # O(mn) space complexity, O(mn) time complexity
-    # Perform a BFS stepping from visited to non-visited entries
-    # Use a min heap to store the smallest height
-    # stepping from visited to nonvisited
-    if len(height) <= 1: return 0
-    m, n = len(heightMap), len(heightMap and heightMap[0])
-    heap, vol = [], 0
-    for i in range(m):
-        for j in range(n):
-            if i in {0, m - 1} or j in {0, n - 1}:
-                heapq.heappush(heap, (heightMap[i][j], i, j))
-                heightMap[i][j] = -1
-    while heap:
-        h, i, j = heapq.heappop(heap)
-        steps = ((i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1))
-        for x, y in steps:
-            if 0 < x < m - 1 and 0 < y < n - 1 and heightMap[x][y] != -1:
-                vol += max(h - heightMap[x][y], 0)
-                heapq.heappush(heap, (max(heightMap[x][y], h), x, y))
-                heightMap[x][y] = -1
-    return vol
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        # 2 pointer
+        # For a given point in the array its area is found by taking
+        # the smaller of the highest wall
+        # to the left or right of it and subtracting the height.
+        # height = [0,1,0,2,1,0,1,3,2,1,2,1]
+        # l_max  = [0,1,1,2,2,2,2,3,3,3,3,3]
+        # r_max  = [3,3,3,3,3,3,3,3,2,2,2,1]
+        # area   = [0,0,1,0,1,2,1,0,0,1,0,0]
+        # Time complexity: O(n)
+        # Space complexity: O(n)
+
+        n = len(height)
+        if n <= 1: return 0
+
+        l_max = [0] * n
+        l_max[0] = height[0]
+        for l in range(1, n):
+            l_max[l] = max(l_max[l-1], height[l])
+
+        r_max = [0] * n
+        r_max[-1] = height[-1]
+        for r in range(n-2, -1, -1):
+            r_max[r] = max(r_max[r+1], height[r])
+
+        area = 0
+        for i in range(n):
+            area += min(l_max[i], r_max[i]) - height[i]
+        return area
