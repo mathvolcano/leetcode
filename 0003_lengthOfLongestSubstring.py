@@ -1,34 +1,32 @@
 """
-3. Longest Substring Without Repeating Characters
-https://leetcode.com/problems/longest-substring-without-repeating-characters/
+424. Longest Repeating Character Replacement
+https://leetcode.com/problems/longest-repeating-character-replacement/
 """
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def characterReplacement(self, s: str, k: int) -> int:
+        # Sliding window with hashmap
+        # [1] Initialize
+        #. a. hashmap, h = {}, to store chars: left most index of the
+        #. b. result variable, res = 0, to track result
+        #. c. m = 0, max repeat letter count
+        #  c. left window pointer l = 0
+        # [2] Iterate right window r through range(len(s))
+        #  a. Update h with next char
+        #. [3] if r - l +1 -m > k then update h and increment l
+        #  b. update res = max(res, r - l + 1)
+        # O(len(s)) time and O(1) space (if max 26 letters), otherwise O(k) space
 
-        # 2 pointer / Sliding Window
-
-        # 0. Handle trivial cases when len(s) <= 1 to ensure pointers set
-        # 1. Initialize 2 pointers, left l=0 & right r = 1, and a result counter res to track longest
-        #    substring length
-        # 2. Initialize a hash set of characters in the longest substring found
-        # 3a. Iterating through s if the r is a new char not in the hash set then add 1 to r
-        #     and add char to hash set.
-        # 3b. Else, increase l and pop the s[l] from the hash set
-
-        # O(len(s)) time complexity because we must iterate through the whole string s
-        # O(len(s)) space complexity (worst case) for storing at most all s in the hash set.
-
-        if len(s) <= 1: return len(s)
-
-        l, r, res = 0, 0, 0
-        hs = set()
-        while r < len(s):
-            if s[r] not in hs:
-                hs.add(s[r])
-                r += 1
-            else:
-                hs.remove(s[l])
+        h, l, m, res = {}, 0, 0, 0
+        for r in range(len(s)):
+            c = s[r]
+            h[c] = h.get(c, 0) + 1
+            m = max(m, h[c])
+            if (r -l + 1 - m) > k:
+                c = s[l]
+                h[c] -= 1
+                if h[c] == 0:
+                    del h[c]
                 l += 1
-            res = max(res, len(hs))
+            res = max(res, r-l+1)
         return res
