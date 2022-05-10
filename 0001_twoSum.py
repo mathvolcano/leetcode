@@ -5,10 +5,13 @@ https://leetcode.com/problems/two-sum/
 
 class Solution:
     def twoSum(self, nums, target):
-        n_to_index = {}
-        for i, n in enumerate(nums):
-            if target - n in n_to_index:
-                return [i, n_to_index[target-n]]
-            else:
-                n_to_index[n] = i
-        return 
+        # Use a hash table
+        # For each num in nums stores num: index.
+        # If following num in nums are in the values then return the indicies of the key & value
+        # O(n) time and space (worst case)
+        h = {}
+        for i,v in enumerate(nums):
+            c = target - v
+            if c in h:
+                return [i, h[c]]
+            h[v] = i
