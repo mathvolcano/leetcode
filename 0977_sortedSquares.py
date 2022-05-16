@@ -8,18 +8,17 @@ class Solution:
 
         # Use 2 points at beginning and end. Compare which is larger and append to result
         # O(n)
-        nums2 = []
+        res = []
         l, r = 0, len(nums) - 1
         while l <= r:
-            l_square = nums[l]**2
-            r_square = nums[r]**2
-            if l_square < r_square:
-                nums2.insert(0, r_square)
+            nl2, nr2 = nums[l]**2, nums[r]**2
+            if nl2 <= nr2:
+                res.insert(0, nr2)
                 r -= 1
-            else:
-                nums2.insert(0, l_square)
+            elif nl2 > nr2:
+                res.insert(0, nl2)
                 l += 1
-        return nums2
+        return res
 
         # Pythonic O(n log n) because it performs a sort
         # return sorted(x*x for x in nums)
