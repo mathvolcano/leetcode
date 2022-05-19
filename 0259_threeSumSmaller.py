@@ -6,26 +6,23 @@ https://leetcode.com/problems/3sum-smaller/
 class Solution:
     def threeSumSmaller(self, nums: List[int], target: int) -> int:
 
-        # 2-pointer solution
-        # [1] sort nums
-        # Ex target = 2, nums = [-1,2,1,-4, 5, -2] -> [-3, -2, -1, 1, 2, 5]
-        # [2] For each index perform twoSumLessThanK –  perform a 2-pointer search to count the number of sums of nums[j] + nums[k] < target - nums[i]
-        # [2] set left l and right r pointers to the endpoints
-        # [3] compute sum of the three values nums[i] + nums[l] + nums[r]
-        # if the sum < target then add (r-l) to result because w can set r to be all numbers between r & l.
-        # [4] increase l if sum is < target, otherwise decrease r if sum is >= target
-        # O(n^2) time and O(1) space
-        n = len(nums)
-        if n < 3: return 0
-
+        # Sort with sliding window
+        # [0] initialize res = 0
+        # [1] Sort arr
+        # [2] iterate i through range(n-2)
+        # [3] Define a helper sliding window function, search_pair
+        #  a. Set l, r = i+1, n-1
+        #  b. while l < r, check the sum < target, if so increment res by r-l (all these indices' values add to < target)
+        # and increment l  else decrement r
+        # O(n^2) time and O(1) space if the sort is done in-place. Else we'll need O(n) additional space for sort.
+        res, n = 0, len(nums)
         nums.sort()
-        res = 0
         for i in range(n-2):
-            diff = target - nums[i]
+            d = target - nums[i]
             l, r = i + 1, n - 1
             while l < r:
-                if nums[l] + nums[r] < diff:
-                    res += (r - l)
+                if nums[l] + nums[r] < d:
+                    res += r - l
                     l += 1
                 else:
                     r -= 1
