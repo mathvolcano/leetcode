@@ -91,6 +91,4 @@ class Solution:
 #                 l += 1
 #             r += 1
 #         return res
-Hey, Charlie 👋! It’s been a while since we studied at UCD math together! I hope that you are doing well after grad school. It would be fun to catch up with you at some point!
-I wanted to connect you with my friend & one of our fellow UCD math grads, Yoni, because of your mutual interest in environmental science & agriculture and just being cool people. I think that you both would have a lot to talk about and be interested in each other’s perspective on things!
-https://www.linkedin.com/in/jonathandackerman/
+
