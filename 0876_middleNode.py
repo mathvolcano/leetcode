@@ -11,18 +11,28 @@ https://leetcode.com/problems/middle-of-the-linked-list/
 
 class Solution:
     def middleNode(self, head: ListNode) -> ListNode:
-        if not head: return head
+        # Fast & Slow pointer
+        # [1] initialize a fast pointer, f = head and keep head as a slow pointer
+        # [2] while f and f.next then increment head once and f twice
+        # [3] return head
+        # O(len(head)) time and O(1) space, but 1 pass
+        f = head
+        while f and f.next:
+            head = head.next
+            f = f.next.next
+        return head
 
-        n = 0
-        dummy1 = dummy2 = head
-        while dummy1:
-            n += 1
-            dummy1 = dummy1.next
-
-        from math import floor
-        mid = floor(n / 2)
-
-        while mid:
-            dummy2 = dummy2.next
-            mid -= 1
-        return dummy2
+        # [1] Get the length, l, of the ll by iterating a copy of head
+        # [2] Get middle count, m = l // 2
+        # [3] increment head by m
+        # O(len(head)) time and O(1) space, but 1.5 iterations of head
+        # ll = head
+        # l = 0
+        # while ll:
+        #   l += 1
+        #   ll = ll.next
+        # m = l // 2
+        # while m:
+        #   head = head.next
+        #   m -= 1
+        # return head
