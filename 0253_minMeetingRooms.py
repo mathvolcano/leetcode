@@ -5,7 +5,7 @@ https://leetcode.com/problems/meeting-rooms-ii/
 
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        # [1] Sort meeings
+        # [1] Sort meetings
         # [2] Initialize a result variable res = 1 and a min heap, h = []
         # [3] Iterate m through intervals
         # [4] while h and m starts after the first element of h ends, heappop(h)
