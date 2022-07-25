@@ -25,7 +25,6 @@ class Solution:
             cur = root == p or root == q  # 1 if root is p or q
             if cur + l_res + r_res >= 2:
                 self.res = root
-                # print(self.res, 'found')
             return cur or l_res or r_res
 
         dfs(root, p, q)
