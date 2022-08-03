@@ -5,12 +5,18 @@ https://leetcode.com/problems/letter-case-permutation/
 
 class Solution:
     def letterCasePermutation(self, S: str) -> List[str]:
-        # O(2^n) space complexity worst case because we have a bijection with binary strings and upper-lower cased words
-        # O(n) time because we
-        answer = ['']
+        # Complexity: n = len(S)
+        # Worst case when all characters are alphabet letters
+        # Time: O(n*2^n) to generate all 2^n possibilities each one taking n time to iterate through s
+        # sum_i i 2^i <= n sum_i 2^i = O(n * 2^n)
+        # Space: O(n*2^n) complexity worst case because we have a bijection with
+        # binary strings and upper-lower cased words and must traverse s (n) to construct answer
+        # times traversing full bijection list of 2^n flipped
+
+        res = ['']
         for s in S:
             if s.isalpha():
-                answer = [a + c for a in answer for c in [s.lower(), s.upper()]]
+                res = [r + c for r in res for c in [s.lower(), s.upper()]]
             else:
-                answer = [a + s for a in answer]
-        return answer
+                res = [r + s for r in res]
+        return res
