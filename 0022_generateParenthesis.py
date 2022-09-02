@@ -4,55 +4,49 @@ https://leetcode.com/problems/generate-parentheses/
 """
 
 class Solution:
-
-    # Recursion & Backtracking
-    # [1] check if the current str is terminal and has equal number of open and closed parentheses equal to max.
-    # if so append to a result variable
-    # [2] If the number of open parenthesis is less than the max in the current string then add '(' to it and recurse.
-    # [3] If the number of closed parenthesis is less than the max in the current string then add ')' to it and recurse.
-    # Note if we reach an invalid parenthesis this way then we discard it.
-    # Time complexity: Catalan numbers requires O(n * 4^n/ n^(3/2)) = O(4^n / n^.5)
-    # Master theorm implies T(n) = 2 T(n/2) =
-    # Space complexity: O(4^n / n^.5) for the n recursive call stack
-
-    # Example n = 3
-    # Pass 1: array=[], cur = '(', 1, 0, 3
-    # Pass 2: array=[], cur = '((', 2, 0, 3
-    # Pass 3: array=[], cur = '(((', 3, 0, 3
-    # Pass 4: array=[], cur = '((()', 3, 1, 3
-    # Pass 5: array=[], cur = '((())', 3, 2, 3
-    # Pass 6: array=[], cur = '((()))', 3, 3, 3
-
-    # Pass 7: array=['((()))'], cur = '(()', 2, 1, 3
-    # Pass 8: array=['((()))'], cur = '(()(', 3, 1, 3
-    # Pass 9: array=['((()))'], cur = '(()()', 3, 2, 3
-    # Pass 10: array=['((()))'], cur = '(()())', 3, 3, 3
-    # Pass 11: array=['((()))', '(()())'], cur = '(())', 2, 2, 3
-    # Pass 12: array=['((()))', '(()())'], cur = '(())(', 3, 2, 3
-    # Pass 13: array=['((()))', '(()())'], cur = '(())()', 3, 3, 3
-    # Pass 14: array=['((()))', '(()())', '(())()'], cur = '()(', 2, 1, 3
-    # Pass 15: array=['((()))', '(()())', '(())()'], cur = '()((', 3, 1, 3
-    # Pass 16: array=['((()))', '(()())', '(())()'], cur = '()(()', 3, 2, 3
-    # Pass 17: array=['((()))', '(()())', '(())()'], cur = '()(())', 3, 3, 3
-    # Pass 18: array=['((()))', '(()())', '(())()', '()(())'], cur = '()()', 2, 2, 3
-    # Pass 19: array=['((()))', '(()())', '(())()', '()(())'], cur = '()()(', 3, 2, 3
-    # Pass 20: array=['((()))', '(()())', '(())()', '()(())'], cur = '()()()', 3, 3, 3
-    # return ['((()))', '(()())', '(())()', '()(())', '()()()']
-
-
-
-    def backtrack(self, array, current_str, n_open, n_closed, n_max):
-        if n_open == n_closed == n_max:
-            array.append(current_str)
-            return
-
-            # backtrack
-        if n_open < n_max:
-            self.backtrack(array, current_str + '(', n_open + 1, n_closed, n_max)
-        if n_closed < n_open:
-            self.backtrack(array, current_str + ')', n_open, n_closed + 1, n_max)
-
     def generateParenthesis(self, n: int) -> List[str]:
+        # DFS recursion
+        # [1] Initialize result bojects, res = [] and
+        # [2] define a helper function with input string and count of left parentheses
+        # [3] Base case: if l == n and r == n, then append string to result
+        # [4] Recursion: if l < n then recurse on s + '(' and if r < l recurse on s+')'
+        # Complexity
+        # If you know that there is a bijection of # of parentheses & catalan numbers and remember
+        # Catalan numbers require O(4^n/n^.5) time complexity to generate and store.
+        # Time: Calculate by Master Theorem T(n) = 2*T(n/2)
+        # Otherwise
+        # Time: Concatenating parenthesis is O(n) worst case and upper bound of # of parenthesis is 2^n
+        # so O(n*2^n).
+        # Space: O(n) for recursive call stack of at most size 2^(n-1) => O(n 2^n)
+        def helper(n, l, r, s, i, res):
+            if l == n and r == n:  # Base/terminal case
+                res.append(s)
+            if l < n: helper(n, l + 1, r, s+'(', i + 1, res)
+            if l > r: helper(n, l, r + 1, s+')', i + 1, res)
+
         res = []
-        self.backtrack(res, '', 0, 0, n)
+        helper(n, 0, 0, '', 0, res)
         return res
+
+        # BFS
+        # Complexity same as DFS
+
+#         class ParenthesesString:
+#             def __init__(self, str, l, r):
+#                 self.str = str
+#                 self.l = l
+#                 self.r = r
+
+#         from collections import deque
+#         res = []
+#         q = deque()
+#         q.append(ParenthesesString("", 0, 0))
+#         while q:
+#             ps = q.popleft()
+#             if ps.l == n and ps.r == n:
+#                 res.append(ps.str)
+#             if ps.l < n:
+#                 q.append(ParenthesesString(ps.str + "(", ps.l + 1, ps.r))
+#             if ps.l > ps.r:
+#                 q.append(ParenthesesString(ps.str + ")", ps.l, ps.r + 1))
+#         return res
